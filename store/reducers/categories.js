@@ -7,7 +7,7 @@ const initialState = {
 function categories(state = initialState, action) {
   switch (action.type) {
     case 'SET_ACTIVE_CATEGORY':
-      state.activeCategory = action.payload
+      state.activeCategory = action.payload;
       break;
     default:
       return initialState
