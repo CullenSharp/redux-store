@@ -10,7 +10,7 @@ import { setActiveCategory } from '../store/reducers/categories'
 
 function Categories() {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.categories.categories);
+  const categories = useSelector(state => state.store.categories);
 
   return (
     <Box>
