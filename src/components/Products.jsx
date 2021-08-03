@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -8,12 +8,16 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import { addItemToCart } from '../store/reducers/categories.js'
+
 function Products () {
   const [products, setProducts] = useState([]);
   
+  const dispatch = useDispatch();
+
   const activeCategory = useSelector(state => state.store.activeCategory);
   const productsFromStore = useSelector(state => state.store.products);
-  
+
   // filters product list by an active category
   useEffect(() => {
     if (!activeCategory.name) { setProducts([...productsFromStore ]);}
@@ -45,7 +49,10 @@ function Products () {
                 {product.description}
               </Typography>
             </CardContent>
-            <Button color="inherit">
+            <Button 
+              color="inherit"
+              onClick={e => dispatch(addItemToCart(product))}
+            >
               Add to Cart
             </Button>
             <Button color="inherit">

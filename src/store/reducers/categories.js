@@ -14,6 +14,7 @@ const initialState = {
     } 
   ],
   products: [],
+  cart: [],
 }
 
 initialState.products.push({
@@ -41,12 +42,24 @@ export function setActiveCategory(category) {
   }
 }
 
+export function addItemToCart(product) {
+  return {
+    type: 'ADDED_ITEM_TO_CART',
+    payload: product,
+  }
+}
+
 function categories(state = initialState, action) {
   switch (action.type) {
     case 'SET_ACTIVE_CATEGORY':
       return(
         {...state, activeCategory: action.payload}
       );
+    case 'ADDED_ITEM_TO_CART':
+      const { cart } = state;
+      return (
+        {...state, cart: [...cart, action.payload]}
+      )
     default:
       return initialState
   }
