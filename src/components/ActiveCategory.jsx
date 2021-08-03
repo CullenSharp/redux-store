@@ -12,9 +12,7 @@ function ActiveCategory() {
   useEffect(() => {
     setActiveCategory({...activeCategoryInStore});
   }, [activeCategoryInStore])
-
-  // might want to conditionally render this component
-  // no active category is selected
+  
   return(
     <Box>
       <Typography variant="h2">
