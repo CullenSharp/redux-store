@@ -1,6 +1,18 @@
 const initialState = {
-  activeCategory: '',
-  categories: ['electronics', 'books'],
+  activeCategory: {
+    name: '',
+    description: '',
+  },
+  categories: [
+    {
+      name: 'electronics',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla faucibus.'
+    },
+    {
+      name: 'books',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum.'
+    } 
+  ],
   products: [],
 }
 
