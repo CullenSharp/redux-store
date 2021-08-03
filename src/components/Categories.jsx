@@ -20,10 +20,10 @@ function Categories() {
       <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
         {categories.map(category => (
           <Button 
-            key={category}
-            onClick={e => dispatch(setActiveCategory(category))}
+            key={category.name}
+            onClick={e => dispatch(setActiveCategory({...category}))}
           >
-            {category}
+            {category.name}
           </Button>
         ))
         }

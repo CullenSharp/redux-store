@@ -13,14 +13,14 @@ function Products () {
   
   const activeCategory = useSelector(state => state.store.activeCategory);
   const productsFromStore = useSelector(state => state.store.products);
-
+  
   // filters product list by an active category
   useEffect(() => {
-    if (!activeCategory) { setProducts([...productsFromStore ]);}
+    if (!activeCategory.name) { setProducts([...productsFromStore ]);}
 
     else {
       const productsFilteredByCategory = productsFromStore
-          .filter(product => product.category === activeCategory);
+          .filter(product => product.category === activeCategory.name);
 
       setProducts([...productsFilteredByCategory]);
     }
