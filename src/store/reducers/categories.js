@@ -49,6 +49,13 @@ export function addItemToCart(product) {
   }
 }
 
+export function removeItemFromCart(name) {
+  return {
+    type: 'REMOVED_ITEM_FROM_CART',
+    payload: name,
+  }
+}
+
 function categories(state = initialState, action) {
   switch (action.type) {
     case 'SET_ACTIVE_CATEGORY':
@@ -56,10 +63,15 @@ function categories(state = initialState, action) {
         {...state, activeCategory: action.payload}
       );
     case 'ADDED_ITEM_TO_CART':
-      const { cart } = state;
       return (
-        {...state, cart: [...cart, action.payload]}
-      )
+        {...state, cart: [...state.cart, action.payload]}
+      );
+    case 'REMOVED_ITEM_FROM_CART':
+      const filteredCart = state.cart
+          .filter( product => product.name !== action.payload);
+      return (
+        {...state, cart: [...filteredCart]}
+      );
     default:
       return initialState
   }
