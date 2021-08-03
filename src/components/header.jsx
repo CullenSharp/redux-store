@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
+// import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 // Renders the name of the store at the head
 function Header() {
   return (
-    <AppBar>
+    <header>
       <ToolBar>
         <Typography variant="h6" nowrap>
           Redux Store
@@ -16,7 +16,7 @@ function Header() {
       <Button color="inherit">
         Cart
       </Button>
-    </AppBar>
+    </header>
   )
 }
 
