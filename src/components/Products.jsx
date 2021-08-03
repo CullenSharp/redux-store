@@ -17,13 +17,13 @@ function Products () {
   // filters product list by an active category
   useEffect(() => {
     if (!activeCategory) { setProducts([...productsFromStore ]);}
+
     else {
       const productsFilteredByCategory = productsFromStore
           .filter(product => product.category === activeCategory);
 
       setProducts([...productsFilteredByCategory]);
     }
-    console.log(activeCategory)
   }, [activeCategory, productsFromStore])
 
   return (
@@ -31,9 +31,11 @@ function Products () {
       {products.map(product => (
         <Card key={product.name}>
           <CardActionArea>
+            {/* todo: remove inline styling later */}
             <CardMedia 
-              image="http://placekitten.com/200/300"
+              image="http://placekitten.com/400/300"
               title="image of product"
+              style={{ width: '400px', height: '300px',  }}
             />
             <CardContent>
               <Typography variant="h5" component="h2">
