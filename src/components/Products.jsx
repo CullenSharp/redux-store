@@ -8,15 +8,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import { addItemToCart } from '../store/reducers/categories.js'
+import { addItemToCart } from '../store/actions/actions'
 
 function Products () {
   const [products, setProducts] = useState([]);
   
   const dispatch = useDispatch();
 
-  const activeCategory = useSelector(state => state.store.activeCategory);
-  const productsFromStore = useSelector(state => state.store.products);
+  const activeCategory = useSelector(state => state.categories.activeCategory);
+  const productsFromStore = useSelector(state => state.products);
 
   // filters product list by an active category
   useEffect(() => {
@@ -39,7 +39,6 @@ function Products () {
             <CardMedia 
               image="http://placekitten.com/400/300"
               title="image of product"
-              style={{ width: '400px', height: '300px',  }}
             />
             <CardContent>
               <Typography variant="h5" component="h2">

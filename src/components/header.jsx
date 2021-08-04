@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 // Renders the name of the store at the head
 function Header() {
-  const cartSize = useSelector(state => state.store.cart).length;
+  const cartSize = useSelector(state => state.cart).length;
 
   return (
     <header>

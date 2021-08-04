@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 function ActiveCategory() {
   const [activeCategory, setActiveCategory] = useState({});
 
-  const activeCategoryInStore = useSelector(state => state.store.activeCategory);
+  const activeCategoryInStore = useSelector(state => state.categories.activeCategory);
 
   useEffect(() => {
     setActiveCategory({...activeCategoryInStore});
