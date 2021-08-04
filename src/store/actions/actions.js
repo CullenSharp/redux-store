@@ -41,6 +41,16 @@ export const setProducts = (products) => ({
 });
 
 /**
+ * Creates an action
+ * @param {array} categories 
+ * @returns 
+ */
+export const setCategories = (categories) => ({
+  type: 'FETCHED_CATEGORIES',
+  payload: categories,
+});
+
+/**
  * Creates an async action
  * Dispatches setProducts
  * @returns {function}
@@ -52,6 +62,20 @@ export const fetchProducts = () => async (dispatch, getState) => {
   const {results} = response.data;
 
   dispatch(setProducts(results));
+}
+
+/**
+ * Creates an async action
+ * Dispatches setProducts
+ * @returns {function}
+ */
+export const fetchCategories = () => async (dispatch, getState) => {
+  const response = await axios
+      .get('https://api-js401.herokuapp.com/api/v1/categories');
+
+  const {results} = response.data;
+
+  dispatch(setCategories(results));
 }
 
 const actions = {
