@@ -10,7 +10,7 @@ import { setActiveCategory } from '../store/reducers/categories'
 
 function Categories() {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.categories.categories);
+  const categories = useSelector(state => state.store.categories);
 
   return (
     <Box>
@@ -20,10 +20,10 @@ function Categories() {
       <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
         {categories.map(category => (
           <Button 
-            key={category}
-            onClick={e => dispatch(setActiveCategory(category))}
+            key={category.name}
+            onClick={e => dispatch(setActiveCategory({...category}))}
           >
-            {category}
+            {category.name}
           </Button>
         ))
         }

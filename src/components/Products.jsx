@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector  } from 'react-redux';
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -8,28 +8,38 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import { addItemToCart } from '../store/reducers/categories.js'
+
 function Products () {
-  const products = useSelector(state => state.categories.products);
-  const activeCategory = useSelector(state => state.categories.activeCategory);
+  const [products, setProducts] = useState([]);
+  
+  const dispatch = useDispatch();
 
+  const activeCategory = useSelector(state => state.store.activeCategory);
+  const productsFromStore = useSelector(state => state.store.products);
 
+  // filters product list by an active category
   useEffect(() => {
-    let activeProducts;
-    if (!activeCategory) { return activeProducts = products }
-    activeProducts = products
-        .filter(product => product.category === activeCategory);
+    if (!activeCategory.name) { setProducts([...productsFromStore ]);}
 
-    return activeProducts;
-  }, [activeCategory, products]);
+    else {
+      const productsFilteredByCategory = productsFromStore
+          .filter(product => product.category === activeCategory.name);
+
+      setProducts([...productsFilteredByCategory]);
+    }
+  }, [activeCategory, productsFromStore])
 
   return (
     <React.Fragment>
       {products.map(product => (
         <Card key={product.name}>
           <CardActionArea>
+            {/* todo: remove inline styling later */}
             <CardMedia 
-              image="http://placekitten.com/200/300"
+              image="http://placekitten.com/400/300"
               title="image of product"
+              style={{ width: '400px', height: '300px',  }}
             />
             <CardContent>
               <Typography variant="h5" component="h2">
@@ -39,7 +49,10 @@ function Products () {
                 {product.description}
               </Typography>
             </CardContent>
-            <Button color="inherit">
+            <Button 
+              color="inherit"
+              onClick={e => dispatch(addItemToCart(product))}
+            >
               Add to Cart
             </Button>
             <Button color="inherit">
