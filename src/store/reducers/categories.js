@@ -3,23 +3,18 @@ const initialState = {
     name: '',
     description: '',
   },
-  categories: [
-    {
-      name: 'electronics',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla faucibus.'
-    },
-    {
-      name: 'books',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum.'
-    } 
-  ],
+  categories: [],
 }
 
 function categories(state = initialState, action) {
   switch (action.type) {
     case 'SET_ACTIVE_CATEGORY':
-      return(
+      return (
         {...state, activeCategory: action.payload}
+      );
+    case 'FETCHED_CATEGORIES':
+      return (
+        {...state, categories: [...action.payload]}
       );
     default:
       return state;
