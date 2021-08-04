@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 /**
  * Creates an action
  * @param {object} category
@@ -27,6 +29,29 @@ export const removeItemFromCart = (_id) => ({
   type: 'REMOVED_ITEM_FROM_CART',
   payload: _id,
 });
+
+/**
+ * Creates an action
+ * @param {array} products 
+ * @returns 
+ */
+export const setProducts = (products) => ({
+  type: 'FETCHED_PRODUCTS',
+  payload: products,
+});
+
+/**
+ * Creates an async action
+ * Dispatches setProducts
+ * @returns {function}
+ */
+export const fetchProducts = () => async (dispatch, getState) => {
+  const {results} = await axios
+      .get('https://api-js401.herokuapp.com/api/v1/products')
+      .data;
+
+  dispatch(setProducts(results));
+}
 
 const actions = {
   setActiveCategory,
