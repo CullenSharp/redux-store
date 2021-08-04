@@ -18,6 +18,8 @@ function products(state = initialState, action) {
             }
             return product;
           })
+    case 'FETCHED_PRODUCTS':
+      return action.payload;
     default:
       return state;
   }

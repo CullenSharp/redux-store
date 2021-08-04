@@ -46,9 +46,10 @@ export const setProducts = (products) => ({
  * @returns {function}
  */
 export const fetchProducts = () => async (dispatch, getState) => {
-  const {results} = await axios
-      .get('https://api-js401.herokuapp.com/api/v1/products')
-      .data;
+  const response = await axios
+      .get('https://api-js401.herokuapp.com/api/v1/products');
+
+  const {results} = response.data;
 
   dispatch(setProducts(results));
 }

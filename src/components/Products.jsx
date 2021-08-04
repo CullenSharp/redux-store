@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import { addItemToCart } from '../store/actions/actions'
+import { addItemToCart, fetchProducts } from '../store/actions/actions'
 
 function Products () {
   const [products, setProducts] = useState([]);
@@ -17,6 +17,10 @@ function Products () {
 
   const activeCategory = useSelector(state => state.categories.activeCategory);
   const productsFromStore = useSelector(state => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   // filters product list by an active category
   useEffect(() => {
@@ -28,7 +32,7 @@ function Products () {
 
       setProducts([...productsFilteredByCategory]);
     }
-  }, [activeCategory, productsFromStore])
+  }, [activeCategory, productsFromStore]);
 
   return (
     <React.Fragment>
