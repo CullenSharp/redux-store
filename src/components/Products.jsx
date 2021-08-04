@@ -33,32 +33,34 @@ function Products () {
   return (
     <React.Fragment>
       {products.map(product => (
-        <Card key={product.name}>
-          <CardActionArea>
-            {/* todo: remove inline styling later */}
-            <CardMedia 
-              image="http://placekitten.com/400/300"
-              title="image of product"
-            />
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                {product.name}
-              </Typography>
-              <Typography variant="body2" color= "textSecondary" component="p">
-                {product.description}
-              </Typography>
-            </CardContent>
-            <Button 
-              color="inherit"
-              onClick={e => dispatch(addItemToCart(product))}
-            >
-              Add to Cart
-            </Button>
-            <Button color="inherit">
-              View Details
-            </Button>
-          </CardActionArea>
-        </Card>
+        product.inStock ? 
+          <Card key={product.name}>
+            <CardActionArea>
+              {/* todo: remove inline styling later */}
+              <CardMedia 
+                image="http://placekitten.com/400/300"
+                title="image of product"
+              />
+              <CardContent>
+                <Typography variant="h5" component="h2">
+                  {product.name}
+                </Typography>
+                <Typography variant="body2" color= "textSecondary" component="p">
+                  {product.description}
+                </Typography>
+              </CardContent>
+              <Button 
+                color="inherit"
+                onClick={e => dispatch(addItemToCart(product))}
+              >
+                Add to Cart
+              </Button>
+              <Button color="inherit">
+                View Details
+              </Button>
+            </CardActionArea>
+          </Card>
+        : null
       ))
       }
     </React.Fragment>
