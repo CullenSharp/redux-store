@@ -13,8 +13,8 @@ import Footer from './components/Footer';
 import ActiveCategory from './components/ActiveCategory';
 
 function App() {
-  const activeCategory = useSelector(state => state.store.activeCategory);
-  const cart = useSelector(state => state.store.cart);
+  const activeCategory = useSelector(state => state.categories.activeCategory);
+  const cart = useSelector(state => state.cart);
 
   return (
     <Container className="App">

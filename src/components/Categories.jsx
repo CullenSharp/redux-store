@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Box from '@material-ui/core/Box';
@@ -6,11 +6,15 @@ import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
-import { setActiveCategory } from '../store/reducers/categories'
+import { fetchCategories, setActiveCategory } from '../store/actions/actions'
 
 function Categories() {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.store.categories);
+  const categories = useSelector(state => state.categories.categories);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  } ,[dispatch])
 
   return (
     <Box>
