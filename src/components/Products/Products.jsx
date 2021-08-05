@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import { addItemToCart, fetchProducts } from '../store/actions/actions'
+import { addItemToCart, fetchProducts } from '../../store/actions/actions'
 
 function Products () {
   const [products, setProducts] = useState([]);
