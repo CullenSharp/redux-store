@@ -15,6 +15,7 @@ import Categories from './components/Category/Categories';
 import ActiveCategory from './components/Category/ActiveCategory';
 import SimpleCart from './components/Cart/SimpleCart';
 import Products from './components/Products/Products';
+import Checkout from './components/Cart/Checkout';
 import ProductDetails from './components/Products/ProductDetails';
 import Footer from './components/Footer/Footer';
 
@@ -26,19 +27,18 @@ function App() {
     <Router>
       <Container className="App">
         <Header />
-        { cart.length && <SimpleCart /> }
-        <Route path="/" exact>
-          <Categories />
-          { activeCategory.name && <ActiveCategory />  }
-          <Products />
-        </Route>
-        <Route path="/cart" exact>
-          <div>
-            hello, world
-          </div>
-        </Route>
         <Switch>
-          <Route path="/products/:id" children={<ProductDetails />} />
+          <Route path="/" exact>
+            { cart.length && <SimpleCart /> }
+            <Categories />
+            { activeCategory.name && <ActiveCategory />  }
+            <Products />
+          </Route>
+          <Route path="/checkout" exact children={<Checkout />} />
+          <Route path="/products/:id">
+          { cart.length && <SimpleCart /> }
+            <ProductDetails />
+          </Route>
         </Switch>
         <Footer />
       </Container>

@@ -20,9 +20,11 @@ function Header() {
           </Typography>
         </Link>
       </ToolBar>
-      <Button color="inherit">
-        {`Cart (${cartSize})`}
-      </Button>
+      <Link to="/checkout">
+        <Button color="inherit">
+          {`Cart (${cartSize})`}
+        </Button>
+      </Link>
     </header>
   )
 }
