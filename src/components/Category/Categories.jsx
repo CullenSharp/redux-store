@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
-import { fetchCategories, setActiveCategory } from '../store/actions/actions'
+import { fetchCategories, setActiveCategory } from '../../store/actions/actions'
 
 function Categories() {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { removeItemFromCart } from '../store/actions/actions'
+import { removeItemFromCart } from '../../store/actions/actions'
 
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List';
