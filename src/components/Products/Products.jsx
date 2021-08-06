@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -40,7 +41,6 @@ function Products () {
         product.inStock ? 
           <Card key={product.name}>
             <CardActionArea>
-              {/* todo: remove inline styling later */}
               <CardMedia 
                 image="http://placekitten.com/400/300"
                 title="image of product"
@@ -59,9 +59,11 @@ function Products () {
               >
                 Add to Cart
               </Button>
-              <Button color="inherit">
-                View Details
-              </Button>
+              <Link to={`/products/${product._id}`}>
+                <Button color="inherit">
+                  View Details
+                </Button>
+              </Link>
             </CardActionArea>
           </Card>
         : null
